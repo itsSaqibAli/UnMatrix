@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- rounded_button.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <corners android:radius="45dp"/> <!-- Adjust the radius to change the roundness -->
+    <solid android:color="@color/pinky"/> <!-- Change the color to desired button color -->
+</shape>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">UnMatrix</string>
+    <string name="selected_item">Selected item:</string>
+    <string-array name="spinner_tools">
+        <item>Determinant</item>
+        <item>Adjoint</item>
+        <item>Transpose</item>
+        <item>Inverse</item>
+        <item>Addition</item>
+        <item>Subtraction</item>
+        <item>Multiplication</item>
+        <!-- Add more items as needed -->
+    </string-array>
+</resources>

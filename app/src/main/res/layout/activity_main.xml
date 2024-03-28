@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main"
+    android:background="#434B4E"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UnMatrix"
+        android:textStyle="italic"
+        android:textColor="@color/white"
+        android:textSize="45sp"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="60dp"/>
+    <!-- Linear Layout centered vertically -->
+
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:orientation="vertical"
+        android:background="#ED3D76"
+        android:layout_marginTop="90dp"
+        android:layout_marginLeft="25sp"
+        android:layout_marginRight="25sp">
+
+        <!-- Add your content inside this LinearLayout -->
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="120sp"
+        android:layout_height="60sp"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="@color/grey_btn"
+        android:gravity="center"
+        android:text="Start"
+        android:textSize="22sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"/>
+
+
+    <!-- Text View -->
+
+
+    <!-- Button below the Linear Layout -->
+
+
+</LinearLayout>
