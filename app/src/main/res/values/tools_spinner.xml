@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">UnMatrix</string>
     <string name="selected_item">Selected item:</string>
     <string-array name="spinner_tools">
         <item>Determinant</item>

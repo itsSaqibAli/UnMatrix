@@ -29,6 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
+            android:id="@+id/rowsMatrix"
             android:hint="rows"
             android:fontFamily="serif"
             android:inputType="number"
@@ -48,6 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
+            android:id="@+id/columnMatrix"
             android:hint="columns"
             android:fontFamily="serif"
             android:textAlignment="center"
@@ -58,12 +60,36 @@
             android:textSize="20sp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center">
+        <CheckBox android:id="@+id/matrixFirst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:background="@drawable/checkbox_custom"
+            android:textSize="25sp"
+            android:layout_marginRight="10sp"
+            android:text="Matrix 1" />
+        <CheckBox android:id="@+id/matrixSecond"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:background="@drawable/checkbox_custom"
+            android:layout_marginLeft="10sp"
+            android:textSize="25sp"
+            android:text="Matrix 2"/>
+    </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Insert Elements of Row 1"
         android:fontFamily="monospace"
-        android:paddingVertical="15sp"
+        android:paddingVertical="25sp"
         android:textSize="25sp"
         android:textAlignment="center"
         android:textColor="@color/white" />
@@ -84,7 +110,7 @@
             android:layout_width="270sp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
-            android:id="@+id/rowdata"
+            android:id="@+id/rowData"
             android:textCursorDrawable="@color/white"
             android:textColor="@color/white"
             android:hint=" 00  01  02  03  04  05  06  07  08"
@@ -94,7 +120,7 @@
             android:inputType="text">
         </EditText>
         <Button
-            android:id="@+id/button"
+            android:id="@+id/rowSubmitButton"
             android:layout_width="58sp"
             android:layout_height="65dp"
             android:text="OK"
@@ -111,7 +137,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/calculateButton"
         android:backgroundTint="@color/pinky"
-        android:layout_marginTop="180sp"
+        android:layout_marginTop="120sp"
         android:layout_gravity="center"
         android:text="Calculate"
         android:textSize="27sp"

@@ -13,6 +13,12 @@
         android:theme="@style/Theme.UnMatrix"
         tools:targetApi="31">
         <activity
+            android:name=".CalculationMatrix"
+            android:exported="true"/>
+        <activity
+            android:name=".SolutionsMatrix"
+            android:exported="true"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

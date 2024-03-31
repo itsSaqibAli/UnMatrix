@@ -2,6 +2,12 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="CalculationMatrix">
+        <State />
+      </entry>
+      <entry key="SolutionsMatrix">
+        <State />
+      </entry>
       <entry key="app">
         <State />
       </entry>

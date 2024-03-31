@@ -5,44 +5,30 @@ import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import android.view.View
-import android.widget.*
 import androidx.core.view.ViewCompat
+import android.widget.Button
 import androidx.core.view.WindowInsetsCompat
+
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.matrix_solutions)
-        // access the items of the list
-        val languages = resources.getStringArray(R.array.spinner_tools)
+        setContentView(R.layout.activity_main)
 
-        // access the spinner
-        val spinner = findViewById<Spinner>(R.id.toolsSpinner)
-        if (spinner != null) {
-            val adapter = ArrayAdapter(
-                this,
-                android.R.layout.simple_spinner_item, languages
-            )
-            spinner.adapter = adapter
+        val startButton: Button = findViewById(R.id.StartButton)
 
-            spinner.onItemSelectedListener = object :
-                AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>,
-                    view: View, position: Int, id: Long
-                ) {
-                    Toast.makeText(
-                        this@MainActivity,
-                        getString(R.string.selected_item) + " " +
-                                "" + languages[position], Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
-                }
-            }
+        // Set click listener for the start button
+        startButton.setOnClickListener {
+            // Start the SolutionActivity
+            val intent = Intent(this, CalculationMatrix::class.java)
+            startActivity(intent)
         }
+
+        // Alternatively, if you want to show the matrix_calculation layout on button click
+//        startButton.setOnClickListener {
+//            // Change visibility of matrix_calculation layout to VISIBLE
+//            setContentView(R.layout.matrix_calculation)
+//        }
     }
 }
