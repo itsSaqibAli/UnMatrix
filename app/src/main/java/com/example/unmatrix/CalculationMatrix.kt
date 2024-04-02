@@ -3,7 +3,9 @@ package com.example.unmatrix
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
@@ -12,88 +14,94 @@ class CalculationMatrix : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.matrix_calculation)
 
-        val row: EditText = findViewById(R.id.rowsMatrix)
-        val column: EditText = findViewById(R.id.columnMatrix)
+        val rowMatrix1: EditText = findViewById(R.id.rowsMatrix1)
+        val columnMatrix1: EditText = findViewById(R.id.columnMatrix1)
+        val rowMatrix2: EditText = findViewById(R.id.rowsMatrix2)
+        val columnMatrix2: EditText = findViewById(R.id.columnMatrix2)
         val rowData: EditText = findViewById(R.id.rowData)
         val rowSubmitButton: Button = findViewById(R.id.rowSubmitButton)
         val calculateButton: Button = findViewById(R.id.calculateButton)
 
-        var numberOfRows = 0
-        var numberOfColumns = 0
-        var currRow = 0
-        var matrix: Array<Array<Int>>? = null
+        var matrix1: String? = ""
+        var matrix2: String? = ""
+
+        var firstRowInserted = false
+        var secondRowInserted = false
+
+        var currRow1 = 0
+        var currRow2 = 0
 
         rowSubmitButton.setOnClickListener {
-            val rowText = row.text.toString()
-            val columnText = column.text.toString()
+            val row1 = rowMatrix1.text.toString()
+            val row2 = rowMatrix2.text.toString()
+            val column1 = columnMatrix1.text.toString()
+            val column2 = columnMatrix2.text.toString()
 
-            if (rowText.isEmpty() || columnText.isEmpty()) {
-                Toast.makeText(this, "Please Enter row and column", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener // Exit the function early if validation fails
-            }
-            // Convert the input string to an array of integers
             val inputString = rowData.text.toString()
-            val rowValues = inputString.split("\\s+".toRegex()).map { it.toInt() }.toTypedArray()
 
-            if (matrix == null) {
-                numberOfRows = row.text.toString().toInt()
-                numberOfColumns = column.text.toString().toInt()
-                matrix = Array(numberOfRows) { Array(numberOfColumns) { 0 } }
-            }
-
-                // Store the row values in the matrix
-            for (i in rowValues.indices) {
-                    matrix!![currRow][i] = rowValues[i]
-            }
-            currRow++
-
-            // Clear the rowData EditText for the next input
-            rowData.text.clear()
-
-            if (currRow == matrix!!.size) {
-                Toast.makeText(this, "You have entered all rows, PRESS CALCULATE", Toast.LENGTH_SHORT).show()
+            if(inputString == "") {
+                Toast.makeText(this, "Empty Row, dumpty Row -: Re-Enter!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
+            if(secondRowInserted) {
+                Toast.makeText(this, "Press Calculate!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
-        }
+            if ((row1.isEmpty() || column1.isEmpty()) && (row2.isEmpty() || column2.isEmpty())) {
+                Toast.makeText(this, "Specify row and column first", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
-        calculateButton.setOnClickListener {
-            var sum = 0
-            if (matrix != null) {
-                for (rows in matrix!!) {
-                    for (el in rows) {
-                        sum += el
-                    }
+            if (!firstRowInserted) {
+                matrix1 += if (currRow1 == row1.toInt()-1) {
+                    inputString
+                } else {
+                    "$inputString\n"
+                }
+                currRow1++
+                if (currRow1 == row1.toInt()) {
+                    Toast.makeText(this, "Matrix 1 Successfully Passed \nINSERT MATRIX 2 OR PRESS CALCULATE", Toast.LENGTH_SHORT).show()
+                    firstRowInserted = true
+                    rowData.text.clear()
+                    return@setOnClickListener
+                }
+
+            } else {
+                matrix2 += if (currRow2 == row2.toInt()-1) {
+                    inputString
+                } else {
+                    "$inputString\n"
+                }
+                currRow2++
+                if (currRow2 == row2.toInt()) {
+                    Toast.makeText(this, "Matrix 2 Successfully Passed, PRESS CALCULATE", Toast.LENGTH_SHORT).show()
+                    rowData.text.clear()
+                    secondRowInserted = true
+                    return@setOnClickListener
                 }
             }
 
-            // Show the sum as a toast message
-            Toast.makeText(this, "Sum : $sum", Toast.LENGTH_SHORT).show()
+            rowData.text.clear()
 
-            // Convert the matrix to a string
-            val matrixString = matrixToString(matrix)
+            rowData.text.clear()
+        }
 
-            // Create an intent to start the SolutionsMatrix activity
+        calculateButton.setOnClickListener {
+            if (matrix1 == "" || matrix1 == null) {
+                Toast.makeText(this, "Matrices are not fully inserted!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            Toast.makeText(this, "Matrix 1: $matrix1 Matrix 2: $matrix2", Toast.LENGTH_SHORT).show()
+
             val intent = Intent(this, SolutionsMatrix::class.java)
+            intent.putExtra("matrix_string1", matrix1)
+            if (matrix2 != null && matrix2.isNotEmpty()) {
+                    intent.putExtra("matrix_string2", matrix2)
+            }
 
-            // Pass the matrix string as an extra with the intent
-            intent.putExtra("matrix_string", matrixString as CharSequence)
-
-            // Start the SolutionsMatrix activity
             startActivity(intent)
         }
-
-    }
-    private fun matrixToString(matrix: Array<Array<Int>>?): String {
-        if (matrix == null) return ""
-
-        val rows = mutableListOf<String>()
-        for (row in matrix) {
-            val rowString = row.joinToString(separator = " ")
-            rows.add(rowString)
-        }
-        return rows.joinToString(separator = "\n")
     }
 }
-
