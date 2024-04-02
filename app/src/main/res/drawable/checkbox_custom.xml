@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Checked state -->
+    <item android:state_checked="true">
+        <shape android:shape="rectangle">
+            <!-- Background color when checked -->
+            <solid android:color="@color/white" />
+            <!-- Optional: Add stroke or other attributes -->
+        </shape>
+    </item>
+    <!-- Unchecked state -->
+    <item>
+        <shape android:shape="rectangle">
+            <!-- Background color when unchecked -->
+            <solid android:color="@color/white" />
+            <!-- Optional: Add stroke or other attributes -->
+        </shape>
+    </item>
+</selector>

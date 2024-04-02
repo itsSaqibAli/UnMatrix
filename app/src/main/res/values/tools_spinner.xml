@@ -2,13 +2,19 @@
 <resources>
     <string name="selected_item">Selected item:</string>
     <string-array name="spinner_tools">
-        <item>Determinant</item>
-        <item>Adjoint</item>
-        <item>Transpose</item>
-        <item>Inverse</item>
+        <item>Matrix I</item>
+        <item>Matrix II</item>
         <item>Addition</item>
         <item>Subtraction</item>
         <item>Multiplication</item>
+        <item>Determinant I</item>
+        <item>Determinant II</item>
+        <item>Adjoint I</item>
+        <item>Adjoint II</item>
+        <item>Transpose I</item>
+        <item>Transpose II</item>
+        <item>Inverse I</item>
+        <item>Inverse II</item>
         <!-- Add more items as needed -->
     </string-array>
 </resources>
